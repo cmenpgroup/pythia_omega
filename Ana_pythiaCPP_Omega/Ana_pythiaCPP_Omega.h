@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <unistd.h>
 #include "HistManager_pythiaCPP_Omega.h"
 #include "PartComb_pythiaCPP_Omega.h"
 #include "PDG_pythiaCPP_Omega.h"
