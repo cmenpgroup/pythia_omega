@@ -42,6 +42,9 @@ private:
     TH2D *hIM_NotOmega_Decay1[4]; // pi+ pi- pi0 inv. mass for events that are not omega, 1 part. decay
     TH2D *hIM_NotOmega_Decay2[4]; // pi+ pi- pi0 inv. mass for events that are not omega, 2 part. decay
     TH2D *hIM_NotOmega_Decay3[4]; // pi+ pi- pi0 inv. mass for events that are not omega, 3 part. decay
+    TH2D *hIM_Unknown_Decay1[4]; // pi+ pi- pi0 inv. mass for events with unknown parent, 1 part. decay
+    TH2D *hIM_Unknown_Decay2[4]; // pi+ pi- pi0 inv. mass for events with unknown parent, 2 part. decay
+    TH2D *hIM_Unknown_Decay3[4]; // pi+ pi- pi0 inv. mass for events with unknown parent, 3 part. decay
 public:
     HistManager_pythiaCPP_Omega();
     void BookHist();
@@ -74,6 +77,10 @@ public:
     TH2D* Get_hIM_NotOmega_Decay1(int index) { return hIM_NotOmega_Decay1[index]; };
     TH2D* Get_hIM_NotOmega_Decay2(int index) { return hIM_NotOmega_Decay2[index]; };
     TH2D* Get_hIM_NotOmega_Decay3(int index) { return hIM_NotOmega_Decay3[index]; };
+
+    TH2D* Get_hIM_Unknown_Decay1(int index) { return hIM_Unknown_Decay1[index]; };
+    TH2D* Get_hIM_Unknown_Decay2(int index) { return hIM_Unknown_Decay2[index]; };
+    TH2D* Get_hIM_Unknown_Decay3(int index) { return hIM_Unknown_Decay3[index]; };
     
     int GetMAX_SECTORS() { return MAX_SECTORS; };
     double GetLIGHTSPEED() { return LIGHTSPEED; };

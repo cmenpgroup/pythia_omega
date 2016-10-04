@@ -111,6 +111,18 @@ void HistManager_pythiaCPP_Omega::BookHist(){
         sprintf(hname,"hIM_NotOmega_Decay3_%i",k+1);
         sprintf(htitle,"Three particle decay, Case %i",k+1);
         hIM_NotOmega_Decay3[k] = new TH2D(hname,htitle,nIMomega,IMomegaLo,IMomegaHi,nDecay3,0.5,nDecay3+0.5);
+
+        sprintf(hname,"hIM_Unknown_Decay1_%i",k+1);
+        sprintf(htitle,"One particle decay, Case %i",k+1);
+        hIM_Unknown_Decay1[k] = new TH2D(hname,htitle,nIMomega,IMomegaLo,IMomegaHi,nDecay1,0.5,nDecay1+0.5);
+        
+        sprintf(hname,"hIM_Unknown_Decay2_%i",k+1);
+        sprintf(htitle,"Two particle decay, Case %i",k+1);
+        hIM_Unknown_Decay2[k] = new TH2D(hname,htitle,nIMomega,IMomegaLo,IMomegaHi,nDecay2,0.5,nDecay2+0.5);
+        
+        sprintf(hname,"hIM_Unknown_Decay3_%i",k+1);
+        sprintf(htitle,"Three particle decay, Case %i",k+1);
+        hIM_Unknown_Decay3[k] = new TH2D(hname,htitle,nIMomega,IMomegaLo,IMomegaHi,nDecay3,0.5,nDecay3+0.5);
     }
 }
 
@@ -235,6 +247,19 @@ void HistManager_pythiaCPP_Omega::WriteHist(string outFile){
         hIM_NotOmega_Decay3[k]->GetYaxis()->SetTitle("Particle Combination");
         hIM_NotOmega_Decay3[k]->Write();
     }
-    
+
+    for(k=0; k<4; k++){
+        hIM_Unknown_Decay1[k]->GetXaxis()->SetTitle("Mass (GeV/c^{2})");
+        hIM_Unknown_Decay1[k]->GetYaxis()->SetTitle("Particle Combination");
+        hIM_Unknown_Decay1[k]->Write();
+        
+        hIM_Unknown_Decay2[k]->GetXaxis()->SetTitle("Mass (GeV/c^{2})");
+        hIM_Unknown_Decay2[k]->GetYaxis()->SetTitle("Particle Combination");
+        hIM_Unknown_Decay2[k]->Write();
+        
+        hIM_Unknown_Decay3[k]->GetXaxis()->SetTitle("Mass (GeV/c^{2})");
+        hIM_Unknown_Decay3[k]->GetYaxis()->SetTitle("Particle Combination");
+        hIM_Unknown_Decay3[k]->Write();
+    }
     out->Close();
 }

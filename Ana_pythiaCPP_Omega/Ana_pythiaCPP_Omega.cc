@@ -4,7 +4,7 @@ void PrintUsage(char *processName)
 {
     cerr << processName << " <options> <filename>\n";
     cerr << "\toptions are:\n";
-    cerr << "\t-o<filename>\tROOT output file (def. = ctProcess_omega.root).\n";
+    cerr << "\t-o<filename>\tROOT output file (def. = Ana_pythiaCPP_Omega.root).\n";
     cerr << "\t-M#\t\tprocess maximum # of events.\n";
     cerr << "\t-D#\t\tinform user when # of events have been processed (def. = 1000).\n";
     cerr << "\t-A#\t\tAnalysis type (def. = 0)\n";
@@ -452,6 +452,11 @@ int process (string inFile, int iAna, int MaxEvents, int dEvents) {
                         }
                     }else{
                         FillHists_omega(pip,pim,pi0,ntNu,9);
+
+                        if(evtOneBodyDecay) myHistManager.Get_hIM_NotOmega_Decay1(0)->Fill(PipPimPi0.M(),myDecay1.Get_trueDecayNum());
+                        if(evtTwoBodyDecay) myHistManager.Get_hIM_NotOmega_Decay2(0)->Fill(PipPimPi0.M(),myDecay2.Get_trueDecayNum());
+                        if(evtThreeBodyDecay) myHistManager.Get_hIM_NotOmega_Decay3(0)->Fill(PipPimPi0.M(),myDecay3.Get_trueDecayNum());
+
                         fout09<<endl<<"Event: "<<ii<<"\tProcess: "<<ntProcess<<endl;
                         for(jj=0; jj<ntNpart; jj++){
                             fout09<<jj+1<<"\t"<<tempKs[jj]<<"\t"<<tempPid[jj]<<"\t"<<tempParent[jj]<<"\t"<<myPDG.Get_id2name(tempPid[jj])<<endl;
@@ -467,9 +472,9 @@ int process (string inFile, int iAna, int MaxEvents, int dEvents) {
                         if(no_other_mesons) FillHists_omega(pip,pim,pi0,ntNu,13);
                         if(!evtAll) FillHists_omega(pip,pim,pi0,ntNu,17);
                     }
-                    if(evtOneBodyDecay) myHistManager.Get_hIM_NotOmega_Decay1(0)->Fill(PipPimPi0.M(),myDecay1.Get_trueDecayNum());
-                    if(evtTwoBodyDecay) myHistManager.Get_hIM_NotOmega_Decay2(0)->Fill(PipPimPi0.M(),myDecay2.Get_trueDecayNum());
-                    if(evtThreeBodyDecay) myHistManager.Get_hIM_NotOmega_Decay3(0)->Fill(PipPimPi0.M(),myDecay3.Get_trueDecayNum());
+                    if(evtOneBodyDecay) myHistManager.Get_hIM_Unknown_Decay1(0)->Fill(PipPimPi0.M(),myDecay1.Get_trueDecayNum());
+                    if(evtTwoBodyDecay) myHistManager.Get_hIM_Unknown_Decay2(0)->Fill(PipPimPi0.M(),myDecay2.Get_trueDecayNum());
+                    if(evtThreeBodyDecay) myHistManager.Get_hIM_Unknown_Decay3(0)->Fill(PipPimPi0.M(),myDecay3.Get_trueDecayNum());
                 }
 
                 if(evtDecay2){
@@ -493,6 +498,11 @@ int process (string inFile, int iAna, int MaxEvents, int dEvents) {
                         }
                     }else{
                         FillHists_omega(pip,pim,pi0,ntNu,10);
+                        
+                        if(evtOneBodyDecay) myHistManager.Get_hIM_NotOmega_Decay1(1)->Fill(PipPimPi0.M(),myDecay1.Get_trueDecayNum());
+                        if(evtTwoBodyDecay) myHistManager.Get_hIM_NotOmega_Decay2(1)->Fill(PipPimPi0.M(),myDecay2.Get_trueDecayNum());
+                        if(evtThreeBodyDecay) myHistManager.Get_hIM_NotOmega_Decay3(1)->Fill(PipPimPi0.M(),myDecay3.Get_trueDecayNum());
+
                         fout10<<endl<<"Event: "<<ii<<"\tProcess: "<<ntProcess<<endl;
                         for(jj=0; jj<ntNpart; jj++){
                             fout10<<jj+1<<"\t"<<tempKs[jj]<<"\t"<<tempPid[jj]<<"\t"<<tempParent[jj]<<"\t"<<myPDG.Get_id2name(tempPid[jj])<<endl;
@@ -508,9 +518,9 @@ int process (string inFile, int iAna, int MaxEvents, int dEvents) {
                         if(no_other_mesons) FillHists_omega(pip,pim,pi0,ntNu,14);
                         if(!evtAll) FillHists_omega(pip,pim,pi0,ntNu,18);
                     }
-                    if(evtOneBodyDecay) myHistManager.Get_hIM_NotOmega_Decay1(1)->Fill(PipPimPi0.M(),myDecay1.Get_trueDecayNum());
-                    if(evtTwoBodyDecay) myHistManager.Get_hIM_NotOmega_Decay2(1)->Fill(PipPimPi0.M(),myDecay2.Get_trueDecayNum());
-                    if(evtThreeBodyDecay) myHistManager.Get_hIM_NotOmega_Decay3(1)->Fill(PipPimPi0.M(),myDecay3.Get_trueDecayNum());
+                    if(evtOneBodyDecay) myHistManager.Get_hIM_Unknown_Decay1(1)->Fill(PipPimPi0.M(),myDecay1.Get_trueDecayNum());
+                    if(evtTwoBodyDecay) myHistManager.Get_hIM_Unknown_Decay2(1)->Fill(PipPimPi0.M(),myDecay2.Get_trueDecayNum());
+                    if(evtThreeBodyDecay) myHistManager.Get_hIM_Unknown_Decay3(1)->Fill(PipPimPi0.M(),myDecay3.Get_trueDecayNum());
                 }
                 
                 if(evtDecay3){
@@ -537,6 +547,11 @@ int process (string inFile, int iAna, int MaxEvents, int dEvents) {
                     }else{
                         FillHists_omega(pip,pim,twoPhotons,ntNu,11);
                         myHistManager.Get_hOpAng_TwoPhoton()->Fill(TwoPhotonAngle,4);
+                        
+                        if(evtOneBodyDecay) myHistManager.Get_hIM_NotOmega_Decay1(2)->Fill(PipPimPi0.M(),myDecay1.Get_trueDecayNum());
+                        if(evtTwoBodyDecay) myHistManager.Get_hIM_NotOmega_Decay2(2)->Fill(PipPimPi0.M(),myDecay2.Get_trueDecayNum());
+                        if(evtThreeBodyDecay) myHistManager.Get_hIM_NotOmega_Decay3(2)->Fill(PipPimPi0.M(),myDecay3.Get_trueDecayNum());
+
                         fout11<<endl<<"Event: "<<ii<<"\tProcess: "<<ntProcess<<endl;
                         for(jj=0; jj<ntNpart; jj++){
                             fout11<<jj+1<<"\t"<<tempKs[jj]<<"\t"<<tempPid[jj]<<"\t"<<tempParent[jj]<<"\t"<<myPDG.Get_id2name(tempPid[jj])<<endl;
@@ -552,9 +567,9 @@ int process (string inFile, int iAna, int MaxEvents, int dEvents) {
                         if(no_other_mesons) FillHists_omega(pip,pim,twoPhotons,ntNu,15);
                         if(!evtAll) FillHists_omega(pip,pim,pi0,ntNu,19);
                     }
-                    if(evtOneBodyDecay) myHistManager.Get_hIM_NotOmega_Decay1(2)->Fill(PipPimPi0.M(),myDecay1.Get_trueDecayNum());
-                    if(evtTwoBodyDecay) myHistManager.Get_hIM_NotOmega_Decay2(2)->Fill(PipPimPi0.M(),myDecay2.Get_trueDecayNum());
-                    if(evtThreeBodyDecay) myHistManager.Get_hIM_NotOmega_Decay3(2)->Fill(PipPimPi0.M(),myDecay3.Get_trueDecayNum());
+                    if(evtOneBodyDecay) myHistManager.Get_hIM_Unknown_Decay1(2)->Fill(PipPimPi0.M(),myDecay1.Get_trueDecayNum());
+                    if(evtTwoBodyDecay) myHistManager.Get_hIM_Unknown_Decay2(2)->Fill(PipPimPi0.M(),myDecay2.Get_trueDecayNum());
+                    if(evtThreeBodyDecay) myHistManager.Get_hIM_Unknown_Decay3(2)->Fill(PipPimPi0.M(),myDecay3.Get_trueDecayNum());
                 }
                 
                 if(evtDecay4){
@@ -581,6 +596,11 @@ int process (string inFile, int iAna, int MaxEvents, int dEvents) {
                     }else{
                         FillHists_omega(pip,pim,twoPhotons,ntNu,12);
                         myHistManager.Get_hOpAng_TwoPhoton()->Fill(TwoPhotonAngle,5);
+                        
+                        if(evtOneBodyDecay) myHistManager.Get_hIM_NotOmega_Decay1(3)->Fill(PipPimPi0.M(),myDecay1.Get_trueDecayNum());
+                        if(evtTwoBodyDecay) myHistManager.Get_hIM_NotOmega_Decay2(3)->Fill(PipPimPi0.M(),myDecay2.Get_trueDecayNum());
+                        if(evtThreeBodyDecay) myHistManager.Get_hIM_NotOmega_Decay3(3)->Fill(PipPimPi0.M(),myDecay3.Get_trueDecayNum());
+
                         fout12<<endl<<"Event: "<<ii<<"\tProcess: "<<ntProcess<<endl;
                         for(jj=0; jj<ntNpart; jj++){
                             fout12<<jj+1<<"\t"<<tempKs[jj]<<"\t"<<tempPid[jj]<<"\t"<<tempParent[jj]<<"\t"<<myPDG.Get_id2name(tempPid[jj])<<endl;
@@ -602,9 +622,9 @@ int process (string inFile, int iAna, int MaxEvents, int dEvents) {
                             }
                         }
                     }
-                    if(evtOneBodyDecay) myHistManager.Get_hIM_NotOmega_Decay1(3)->Fill(PipPimPi0.M(),myDecay1.Get_trueDecayNum());
-                    if(evtTwoBodyDecay) myHistManager.Get_hIM_NotOmega_Decay2(3)->Fill(PipPimPi0.M(),myDecay2.Get_trueDecayNum());
-                    if(evtThreeBodyDecay) myHistManager.Get_hIM_NotOmega_Decay3(3)->Fill(PipPimPi0.M(),myDecay3.Get_trueDecayNum());
+                    if(evtOneBodyDecay) myHistManager.Get_hIM_Unknown_Decay1(3)->Fill(PipPimPi0.M(),myDecay1.Get_trueDecayNum());
+                    if(evtTwoBodyDecay) myHistManager.Get_hIM_Unknown_Decay2(3)->Fill(PipPimPi0.M(),myDecay2.Get_trueDecayNum());
+                    if(evtThreeBodyDecay) myHistManager.Get_hIM_Unknown_Decay3(3)->Fill(PipPimPi0.M(),myDecay3.Get_trueDecayNum());
                 }
             }
         }
